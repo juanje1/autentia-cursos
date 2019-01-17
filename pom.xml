@@ -17,6 +17,12 @@
     <properties>
         <java.version>1.8</java.version>
 
+        <sonar.host.url>http://${sonar.host}:9000</sonar.host.url>
+        <sonar.sources>src/main</sonar.sources>
+        <sonar.tests>src/test</sonar.tests>
+        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+        <sonar.language>java</sonar.language>
+
         <jacoco.version>0.7.6.201602180812</jacoco.version>
         <jacoco.outputDir>${project.build.directory}</jacoco.outputDir>
 
@@ -196,4 +202,17 @@
             </properties>
         </profile>
     </profiles>
+
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>releases</name>
+            <url>http://${nexus.host}:8081/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>snapshots</name>
+            <url>http://${nexus.host}:8081/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
