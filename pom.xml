@@ -177,4 +177,23 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <nexus.host>localhost</nexus.host>
+                <sonar.host>localhost</sonar.host>
+            </properties>
+        </profile>
+        <profile>
+            <id>jenkins</id>
+            <properties>
+                <nexus.host>cursosboot-nexus</nexus.host>
+                <sonar.host>cursosboot-sonarqube</sonar.host>
+            </properties>
+        </profile>
+    </profiles>
 </project>
