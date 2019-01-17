@@ -12,6 +12,21 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>Catálogo de cursos</name>
     <description>Ejemplo de la páctica de entrada con el catálogo de cursos</description>
+
+
+    <properties>
+        <java.version>1.8</java.version>
+
+        <jacoco.version>0.7.6.201602180812</jacoco.version>
+        <jacoco.outputDir>${project.build.directory}</jacoco.outputDir>
+
+        <jacoco.utreportpath>${project.build.directory}/jacoco</jacoco.utreportpath>
+        <jacoco.utreportfile>${jacoco.utreportpath}/jacoco.exec</jacoco.utreportfile>
+
+        <jacoco.itreportpath>${project.build.directory}/jacoco</jacoco.itreportpath>
+        <jacoco.itreportfile>${jacoco.itreportpath}/jacoco-it.exec</jacoco.itreportfile>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -70,18 +85,6 @@
 
     </dependencies>
 
-    <properties>
-        <java.version>1.8</java.version>
-
-        <jacoco.version>0.7.6.201602180812</jacoco.version>
-        <jacoco.outputDir>${project.build.directory}</jacoco.outputDir>
-
-        <jacoco.utreportpath>${project.build.directory}/jacoco</jacoco.utreportpath>
-        <jacoco.utreportfile>${jacoco.utreportpath}/jacoco.exec</jacoco.utreportfile>
-
-        <jacoco.itreportpath>${project.build.directory}/jacoco</jacoco.itreportpath>
-        <jacoco.itreportfile>${jacoco.itreportpath}/jacoco-it.exec</jacoco.itreportfile>
-    </properties>
 
     <build>
         <plugins>
@@ -139,6 +142,35 @@
                         <configuration>
                             <outputDirectory>${jacoco.itreportpath}</outputDirectory>
                             <dataFile>${jacoco.itreportfile}</dataFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>${surefireArgLine}</argLine>
+                    <excludes>
+                        <exclude>**/*IT.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>integration-tests</id>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                        <configuration>
+                            <argLine>${failsafeArgLine}</argLine>
+                            <reportsDirectory>${project.build.directory}/failsafe-reports</reportsDirectory>
+                            <skipTests>false</skipTests>
                         </configuration>
                     </execution>
                 </executions>
