@@ -1,8 +1,8 @@
 package com.juanje.cursosboot.service;
 
 import com.juanje.cursosboot.data.CourseRepository;
-import com.juanje.cursosboot.data.TeacherRepository;
 import com.juanje.cursosboot.domain.Course;
+import com.juanje.cursosboot.data.TeacherRepository;
 import com.juanje.cursosboot.domain.Teacher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

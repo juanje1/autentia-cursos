@@ -17,7 +17,7 @@ public class TeacherControllerTest {
 
     @Test
     public void findTeachersShouldCallServiceFindTeachersAndReturnResult(){
-        Page expected = mock(Page.class);
+        Page<Teacher> expected = mock(Page.class);
         Pageable pageable = mock(Pageable.class);
         doReturn(expected).when(teacherService).findTeachers("testName", pageable);
 

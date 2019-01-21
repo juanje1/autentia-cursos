@@ -23,9 +23,9 @@ public class Course implements Serializable {
     @Column(nullable = false)
     private Boolean active;
 
-    /**@Column(nullable = false)
+    @Column(nullable = false)
     @Enumerated(EnumType.ORDINAL)
-    private Level level;**/
+    private Level level;
 
     @ManyToOne(optional = false)
     private Teacher teacher;
@@ -36,15 +36,15 @@ public class Course implements Serializable {
     protected Course() {
     }
 
-    public Course(String name, Boolean active, Teacher teacher) {
+    public Course(String name, Boolean active, Level level, Teacher teacher) {
         this.name = name;
         this.active = active;
-        //this.level = level;
+        this.level = level;
         this.teacher = teacher;
     }
 
-    public Course(Long id, String name, Boolean active, Teacher teacher) {
-        this(name, active, teacher);
+    public Course(Long id, String name, Boolean active, Level level, Teacher teacher) {
+        this(name, active, level, teacher);
         this.id = id;
     }
 
@@ -60,9 +60,9 @@ public class Course implements Serializable {
         return active;
     }
 
-    /**public Level getLevel() {
+    public Level getLevel() {
         return level;
-    }**/
+    }
 
     public Teacher getTeacher() {
         return teacher;
@@ -77,12 +77,12 @@ public class Course implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Course course = (Course) o;
-        return new EqualsBuilder().append(id, course.id).append(name, course.name).append(active, course.active).append(teacher, course.teacher).isEquals();
+        return new EqualsBuilder().append(id, course.id).append(name, course.name).append(active, course.active).append(level, course.level).append(teacher, course.teacher).isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(id).append(name).append(active).append(teacher).toHashCode();
+        return new HashCodeBuilder(17, 37).append(id).append(name).append(active).append(level).append(teacher).toHashCode();
     }
 
 }
