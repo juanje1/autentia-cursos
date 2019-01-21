@@ -1,7 +1,6 @@
 package com.juanje.cursosboot.service;
 
 import com.juanje.cursosboot.data.CourseRepository;
-import com.juanje.cursosboot.data.SubjectRepository;
 import com.juanje.cursosboot.domain.Course;
 import com.juanje.cursosboot.domain.Subject;
 import org.junit.Test;

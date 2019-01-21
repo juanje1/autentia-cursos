@@ -2,7 +2,6 @@ package com.juanje.cursosboot.web;
 
 import com.juanje.cursosboot.domain.Course;
 import com.juanje.cursosboot.domain.Subject;
-import com.juanje.cursosboot.service.CourseService;
 import org.junit.Test;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
